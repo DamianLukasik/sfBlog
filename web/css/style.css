@@ -1,0 +1,19 @@
+h1 {
+    color: #33CCCC;
+    text-align: center;
+}
+
+p {
+    color: #66CCCC;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+body {
+    background-color: #CCFFFF;
+}
+
+div {
+    margin-left: 10%;
+    margin-right: 10%;
+}
