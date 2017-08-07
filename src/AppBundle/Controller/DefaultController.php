@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use AppBundle\Entity\Product;
+
 class DefaultController extends Controller
 {
     /**
@@ -26,14 +28,26 @@ class DefaultController extends Controller
      * @Route("/produkty", name="produkty")
      */
     public function produktyAction(Request $request)
-    {
-        return $this->render('default/produkty.html.twig',array());
+    {        
+        $products = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findAllOrderedByName();
+        
+        /*
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find(1);*/
+        
+        return $this->render('default/produkty.html.twig',array(
+            'products' => $products,
+        ));
     }    
     /**
      * @Route("/pracownicy", name="pracownicy")
      */
     public function pracownicyAction(Request $request)
     {
+        
         return $this->render('default/pracownicy.html.twig',array());
     }    
     /**
